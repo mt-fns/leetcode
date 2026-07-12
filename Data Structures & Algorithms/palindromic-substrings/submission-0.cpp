@@ -1,0 +1,32 @@
+class Solution {
+public:
+    // at each letter: either pick it or not
+    // if we pick a letter, 
+    // let dp[i] be the max number of palindromes from letters 1..i
+    // dp
+
+    int countSubstrings(string s) {
+        int res = 0;
+
+        for (int i = 0; i < s.size(); i++) {
+            int l = i;
+            int r = i;
+
+            while (l >= 0 && r < s.size() && s[l] == s[r]) {
+                res++;
+                l--;
+                r++;
+            }
+
+            l = i;
+            r = i+1;
+            while (l >= 0 && r < s.size() && s[l] == s[r]) {
+                res++;
+                l--;
+                r++;
+            }
+        }
+
+        return res;
+    }
+};
